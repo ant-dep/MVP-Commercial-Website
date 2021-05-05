@@ -10,6 +10,7 @@
     <script src="/js/config.js" defer></script>
     <script src="/js/cart.js" defer></script>
     <script src="/js/cart.utils.js" defer></script>
+    <script src="/js/main.js" defer></script>
     <title>Orinoco - Panier</title>
     <link rel="shortcut icon" type="image/png" href="../images/orinoco_shortcut_icon.png">
     <meta name="theme-color" content="#f3e9f1" />
@@ -55,52 +56,52 @@
             <div class="row mt-5">
                 <div class="col-12 col-md-10 mx-auto mb-3 p-3">
                     <div class="row">
-                        <!--Products in the cart, dynamically added with JS-->
-                        <tbody id="products">
+                        <div class="col-12 mt-5">
+                            <div class="d-flex justify-content-start">
+                                <h2 class="mr-3">Panier</h2>
+                            </div>
+                        </div>
+                        <tbody id="productsList">
                             <template id="productTemplate">
-                              <tr class="border bg-white rounded">
-                                <td id="productName" class="text-center p-0 py-2">Arnold</td>
-                                <td class="text-center p-0">
-                                  <form class="flex">
-                                    <select
-                                      id="productQuantity"
-                                      class="border border-primary rounded text-center pl-3 pr-10 py-1 focus:outline-none sm:text-sm z-10"
-                                      name="quantity"
-                                      id="quantity"
-                                    >
-                                      <option value="1">1</option>
-                                      <option value="2">2</option>
-                                      <option value="3">3</option>
-                                      <option value="4">4</option>
-                                      <option value="5">5</option>
-                                      <option value="6">6</option>
-                                      <option value="7">7</option>
-                                      <option value="8">8</option>
-                                      <option value="9">9</option>
-                                      <option value="10">10</option>
-                                      <option value="11">11</option>
-                                      <option value="12">12</option>
-                                    </select>
-                                  </form>
-                                </td>
-                                <td id="productPrice" class="text-center p-0">x€</td>
-                                <td id="productTotalPrice" class="text-center p-0">x€</td>
-                              </tr>
+                                <tr class="row shadow-sm py-2 mb-3 bg-body rounded-3">
+                                    <div class="col-3">
+                                        <img id="productImage" class="img-fluid rounded p-0" src="" alt=""/>
+                                    </div>
+                                    <div class="col-2 text-center my-auto">
+                                        <td><a id="productLink" href="" class="link-dark"></a></td>
+                                    </div>
+                                    <td class="col-2 my-auto p-0">
+                                        <form>
+                                            <select id="productQuantity" class="border border-dark rounded-3 text-center pl-3 pr-10 py-1 z-10" name="quantity" id="quantity">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
+                                        </form>
+                                    </td>
+                                    <div class="col-2 my-auto">
+                                        <td id="productPrice" class="text-center p-0">x€</td>
+                                    </div>
+                                    <div class="col-2 my-auto">
+                                        <td id="productTotalPrice" class="text-center p-0">x€</td>
+                                    </div>
+                                    <div class="col-1 my-auto">
+                                        <td><i class="fas fa-trash-alt"></i></td>
+                                    </div>
+                                </tr>
                             </template>
-                            <tr class="bg-gray-100">
-                                <td colspan="3" class="text-center py-2">Total</td>
-                                <td class="text-center" id="totalPrice">x€</td>
-                            </tr>
                         </tbody>
                     </div>
+                    <div id="cartButtons" class="row mt-5 position-sticky bottom-0"></div>
                 </div>
             </div>
-        </div>
-        <!--====================CONTACT / ADRESSE======================-->
-        <div id="checkout" class="container mt-5">
-            <!--Contacts and payment blocks, dynamically added with JS-->
-        </div>
-        <div id="newFooter"></div>
+            <!--====================CONTACT / ADRESSE======================-->
+            <div id="checkout" class="container mt-5">
+                <!--Contacts and payment blocks, dynamically added with JS-->
+            </div>
+            <div id="newFooter"></div>
     </main>
 
     <!--====================FOOTER======================-->
