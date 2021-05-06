@@ -11,7 +11,7 @@ function getProductId() {
 }
 
 function getProductData(productId) {
-    return fetch(`${apiUrl}/api/Camera/${productId}`)
+    return fetch(`${apiUrl}/api/cameras/${productId}`)
         .catch((error) => {
             console.log(error)
         })
@@ -23,14 +23,14 @@ function hydratePage(product) {
     // Hydrate page with data
     document.getElementById('productImage').src = product.imageUrl
     document.getElementById('productName').textContent = product.name
-    document.getElementById('productPrice').textContent = `${product.price / 100}.00 €`
+    document.getElementById('productPrice').textContent = `${product.price / 100}0 €`
     document.getElementById('productDescription').textContent = product.description
-    document.getElementById('productLenses').textContent = product.lenses
 
     // Add event listeners on button
     document.getElementById('addToCart').onclick = (event) => {
         event.preventDefault()
         Cart.addProduct(product)
+        alert("Ajouté à votre panier!");
     }
 
     // Get parent element
@@ -38,14 +38,17 @@ function hydratePage(product) {
 
     // Display all lenses
     product.lenses.forEach((lense) => {
+
+
         // Get & clone template for one lense
         const templateElt = document.getElementById('productLense')
         const cloneElt = document.importNode(templateElt.content, true)
 
         // Hydrate lense clone
-        cloneElt.querySelector('a').textContent = lense
+        cloneElt.querySelector('li').textContent = lense
 
         // Display a new lense
         lensesElt.appendChild(cloneElt)
     })
+
 }

@@ -6,7 +6,7 @@
 })()
 
 async function getProducts() {
-    return fetch(`${apiUrl}/api/camera`)
+    return fetch(`${apiUrl}/api/cameras`)
         .then((httpBodyResponse) => httpBodyResponse.json())
         .then((products) => products)
         .catch((error) => {
@@ -37,7 +37,7 @@ function displayProduct(product) {
     cloneElt.getElementById('productImage').src = product.imageUrl
     cloneElt.getElementById('productName').textContent = product.name
     cloneElt.getElementById('productDescription').textContent = product.description
-    cloneElt.getElementById('productLink').href = `/products.html?id=${product._id}`
+    cloneElt.getElementById('productLink').href = `/html/products.html?id=${product._id}`
 
     // Display template
     document.getElementById('productsList').appendChild(cloneElt)

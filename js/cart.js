@@ -3,23 +3,13 @@
     console.log('Javascript is loaded')
     const productsInShoppingCart = Cart.products
     if (productsInShoppingCart === null) {
-        return hydratePage(productsInShoppingCart)
-    } else {
-        // if nothing in cart display
-        productsList.innerHTML = `
-      <div class="col-12 text-center">
-          <span>Votre panier est vide !</span>
-          <hr class="line my-5">
-      </div>
-      <div class="col-6 mx-auto mt-3">
-          <a class="btn btn-primary w-100" type="button" href="index.html"><span>Continuer mon shopping</span></a>
-      </div>`;
+        return hydratePage(productsInShoppingCart);
     }
 })()
 
 function hydratePage(productsInShoppingCart) {
     // Set total price
-    document.getElementById('totalPrice').textContent = Cart.getTotalPrice() + '.00€'
+    document.getElementById('totalPrice').textContent = Cart.getTotalPrice() + '.0€'
 
     // Loop over all products and displays them
     const productList = Object.values(productsInShoppingCart)
@@ -39,8 +29,8 @@ function displayProduct(product) {
     cloneElt.getElementById('productImage').src = product.imageUrl
     cloneElt.getElementById('productLink').href = `/products.html?id=${product._id}`
     cloneElt.getElementById('productQuantity').selectedIndex = product.quantity - 1
-    cloneElt.getElementById('productPrice').textContent = product.price / 100 + '.00€'
-    cloneElt.getElementById('productTotalPrice').textContent = (product.price * product.quantity) / 100 + '.00€'
+    cloneElt.getElementById('productPrice').textContent = product.price / 100 + '.0€'
+    cloneElt.getElementById('productTotalPrice').textContent = (product.price * product.quantity) / 100 + '.0€'
 
     // Add events
     cloneElt.getElementById('productQuantity').onchange = (e) => {
@@ -52,16 +42,16 @@ function displayProduct(product) {
         const totalPriceElt = e.target.parentElement.parentElement.parentElement.querySelector(
             '#productTotalPrice'
         )
-        const newPrice = (product.price * Cart.getProductQuantity(product._id)) / 100 + '.00€'
+        const newPrice = (product.price * Cart.getProductQuantity(product._id)) / 100 + '.0€'
         totalPriceElt.textContent = newPrice
 
         // Update all products total price
-        document.getElementById('totalPrice').textContent = Cart.getTotalPrice() + '.00€'
+        document.getElementById('totalPrice').textContent = Cart.getTotalPrice() + '.0€'
     }
 
     // Display template
     document.getElementById('productsList').prepend(cloneElt);
-    document.getElementById('cartButtons') = `
+    document.getElementById('cartButtons').innerHTML += `
       <div class="col-6">
         <a class="btn btn-primary w-100" type="button" href="index.html"><span>Continuer mon shopping</span></a>
       </div>
@@ -195,7 +185,7 @@ function displayProduct(product) {
 
     // Display Blocks after click on "Commander"
     let orderBtn = document.querySelector('#order-button');
-    orderBtn.addEventListener('click', displayCheckout);
+    orderBtn.addEventListener('click', displayCheckout());
 }
 
 function addEventListeners() {
