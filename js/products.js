@@ -1,54 +1,30 @@
-// Main function, auto executed at load time
-;
-(async() => {
-    const productId = getProductId()
-    const productData = await getProductData(productId)
-    hydratePage(productData)
-})()
+// Fonction qui récupère les données du serveur par leur ID 
 
-function getProductId() {
-    return new URL(window.location.href).searchParams.get('id')
-}
-
-function getProductData(productId) {
-    return fetch(`${apiUrl}/api/cameras/${productId}`)
-        .catch((error) => {
-            console.log(error)
-        })
-        .then((httpBodyResponse) => httpBodyResponse.json())
-        .then((productData) => productData)
-}
-
-function hydratePage(product) {
-    // Hydrate page with data
-    document.getElementById('productImage').src = product.imageUrl
-    document.getElementById('productName').textContent = product.name
-    document.getElementById('productPrice').textContent = `${product.price / 100}0 €`
-    document.getElementById('productDescription').textContent = product.description
-
-    // Add event listeners on button
-    document.getElementById('addToCart').onclick = (event) => {
-        event.preventDefault()
-        Cart.addProduct(product)
-        alert("Ajouté à votre panier!");
-    }
-
-    // Get parent element
-    const lensesElt = document.getElementById('productLenses')
-
-    // Display all lenses
-    product.lenses.forEach((lense) => {
+const loadDataById = async() => {
+    const camera = await api.getById(localStorage.getItem("productId"))
+    document.getElementById("containerOfProduct").innerHTML =
+        `<div class="row h-100">
+            <div class="col-12 col-lg-6 bg-dark d-flex align-items-center p-0 p-lg-5">
+                <div class="col-12 col-lg-8 mx-auto">
+                    <img id="productImage" class="img-fluid rounded p-0" src="${camera.imageUrl}" alt="${camera.name}" />
+                </div>
+            </div>
+            <div class="col-10 col-lg-4 d-flex flex-column justify-content-center mt-5 mx-auto px-5">
+                <h1 id="productName" class="pb-5">${camera.name}</h1>
+                <p><strong>Description du produit</strong></p>
+                <p id="productDescription">${camera.description}</p>
+                <label for="lense" class="my-3"><strong>Choisissez la couleur de lentille <em>(optionnel)</em></strong>
+                    <select class="form-control border border-gray">
+                        <option id="lense" class="text-center border border-gray py-2"></option>
+                        <option class="text-center">Aucune</option>
+                    </select>
+                </label>
+                <button id="btnAddTo" class="btn btn-dark my-5" onclick="addToShoppingCart('${camera._id}')">Ajouter au panier <span id="productPrice">${camera.price}€</span></button>
+            </div>
+        </div>`
 
 
-        // Get & clone template for one lense
-        const templateElt = document.getElementById('productLense')
-        const cloneElt = document.importNode(templateElt.content, true)
-
-        // Hydrate lense clone
-        cloneElt.querySelector('li').textContent = lense
-
-        // Display a new lense
-        lensesElt.appendChild(cloneElt)
+    camera.lenses.forEach((lense) => {
+        document.getElementById("lense").innerHTML += lense
     })
-
 }

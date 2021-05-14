@@ -7,9 +7,15 @@
     <!--Boostrap framework link from official website-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/d28e6df8ab.js" crossorigin="anonymous"></script>
-    <script src="js/config.js" defer></script>
-    <script src="js/index.js" defer></script>
-    <script src="js/main.js" defer></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/products.js"></script>
+    <script src="/js/redirection.js"></script>
+    <script src="/js/shoppingCartInteraction.js"></script>
+    <script src="/js/shoppingCartPage.js"></script>
+    <script type="text/javascript">
+        loadData();
+    </script>
     <title>Orinoco</title>
     <link rel="shortcut icon" type="image/png" href="images/orinoco_shortcut_icon.png">
     <meta name="theme-color" content="#f3e9f1" />
@@ -36,7 +42,7 @@
                                 <a class="nav-link fw-bold px-3" href="index.html">Accueil</a>
                             </li>
                             <li class="nav-item">
-                                <a id="cart" class="nav-link fw-bold border border-dark rounded-3" href="/html/panier.html">
+                                <a id="cart" class="nav-link fw-bold border border-dark rounded-3" href="html/cart.html">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart4" viewBox="0 0 20 20">
                                         <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
                                     </svg>Panier <span></span>
@@ -50,84 +56,50 @@
     </header>
 
     <!--====================MAIN======================-->
-
-    <!--====================PICTURES CAROUSEL======================-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 col-lg-9 mx-auto my-4 pb-5">
-                <!--bottom indicators of active pictures within the carousel : small bars-->
-                <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                    </ol>
-                    <div class="carousel-inner">
-                        <!--Interval sets up an automatic switching timing : 3sec here for each pictures-->
-                        <div class="carousel-item active" data-bs-interval="3000">
-                            <img src="images/vcam_1.jpg" class="d-block w-100" alt="Zeiss 50S">
-                            <a href="/" class="stretched-link"></a>
+    <main>
+        <!--====================PICTURES CAROUSEL======================-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-lg-9 mx-auto my-4 pb-5">
+                    <!--bottom indicators of active pictures within the carousel : small bars-->
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
                         </div>
-                        <div class="carousel-item" data-bs-interval="3000">
-                            <img src="images/vcam_2.jpg" class="d-block w-100" alt="Hirsch 400DTS">
-                            <a href="/" class="stretched-link"></a>
-                        </div>
-                        <div class="carousel-item" data-bs-interval="3000">
-                            <img src="images/vcam_3.jpg" class="d-block w-100" alt="Kodak JS 105">
-                            <a href="/" class="stretched-link"></a>
-                        </div>
-                        <div class="carousel-item" data-bs-interval="3000">
-                            <img src="images/vcam_4.jpg" class="d-block w-100" alt="Minolta XGS">
-                            <a href="/" class="stretched-link"></a>
-                        </div>
-                        <div class="carousel-item" data-bs-interval="4000">
-                            <img src="images/vcam_5.jpg" class="d-block w-100" alt="Samsung">
-                            <a href="/" class="stretched-link"></a>
+                        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                            <div id="containerOfProductCarousel" class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="1">
+                                </div>
+                            </div>
+                            <!--Previous and Next buttons for manually switching pictures-->
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                              </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                              </button>
                         </div>
                     </div>
-                    <!--Previous and Next buttons for manually switching pictures-->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                      </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                      </button>
                 </div>
-                <div class="col">
-                    <h1 class="text-center pt-5">Nos caméras vintage</h1>
+                <div class="col-8 col-md-8 mx-auto">
+                    <a href="#containerOfProductList" id="displayButton" class="d-block mx-auto btn btn-light rounded-pill border border-dark my-5"><span class="h1 text-center">Nos caméras vintage</span></a>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!--====================PRODUCTS CARDS======================-->
-    <div class="container-fluid mb-5">
-        <!-- PRODUCT CONTAINER & LOADING BOXES -->
-        <div id="productsList" class="row d-flex justify-content-center">
-            <div class="bg-light"></div>
-            <div class="bg-light"></div>
-            <div class="bg-light"></div>
-            <div class="bg-light"></div>
-            <div class="bg-light"></div>
-            <div class="bg-light"></div>
-        </div>
-        <!-- PRODUCT TEMPLATE -->
-        <template id="product">
-            <div class="card img-thumbnail col-12 col-lg-3 my-3 mx-md-3">
-                <img id="productImage" class="card-img-top img-fluid rounded-top pt-2" src="" alt="">
-                <div class="card-body">
-                    <h2 id="productName" class="card-title"></h2>
-                    <p id="productDescription" class="card-text"></p>
-                </div>
-                <a id="productLink" href="" class="stretched-link"></a>
+        <!--====================PRODUCTS CARDS======================-->
+        <div class="container-fluid mb-5">
+            <div class="row" id="containerOfProductList">
+
             </div>
-        </template>
-    </div>
-
+        </div>
+    </main>
     <!--====================FOOTER======================-->
     <footer class="bg-light">
         <div class="container mt-5">

@@ -7,17 +7,19 @@
     <!--Boostrap framework link from official website-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/d28e6df8ab.js" crossorigin="anonymous"></script>
-    <script src="/js/config.js" defer></script>
-    <script src="/js/cart.utils.js" defer></script>
-    <script src="/js/cart.js" defer></script>
-    <script src="/js/main.js" defer></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/products.js"></script>
+    <script src="/js/redirection.js"></script>
+    <script src="/js/shoppingCartInteraction.js"></script>
+    <script src="/js/shoppingCartPage.js"></script>
     <title>Orinoco - Panier</title>
     <link rel="shortcut icon" type="image/png" href="../images/orinoco_shortcut_icon.png">
     <meta name="theme-color" content="#f3e9f1" />
     <meta description="Orinoco, notre nouvelle marque d'appareils photos vintage!">
 </head>
 
-<body>
+<body class="vh-100">
     <!--====================HEADER======================-->
     <header class="bg-light">
         <div class="container">
@@ -36,7 +38,7 @@
                                 <a class="nav-link fw-bold px-3" href="../index.html">Accueil</a>
                             </li>
                             <li class="nav-item">
-                                <a id="cart" class="nav-link fw-bold border border-dark rounded-3" href="panier.html">
+                                <a id="cart" class="nav-link fw-bold border border-dark rounded-3" href="cart.html">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart4" viewBox="0 0 20 20">
                                         <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
                                     </svg>Panier <span class="text-danger"></span>
@@ -50,58 +52,38 @@
     </header>
 
     <!--====================MAIN======================-->
-    <main class="container-fluid py-3 position-relative">
-        <div class="container">
-            <!--====================PANIER======================-->
-            <div class="row mt-5">
-                <div class="col-12 col-md-10 mx-auto mb-3 p-3">
-                    <div id="emptyCart" class="row">
-                        <div class="col-12 mt-5">
-                            <div class="d-flex justify-content-start">
-                                <h2 class="mr-3">Panier</h2>
-                            </div>
-                        </div>
-                        <tbody id="productsList">
-                            <template id="productTemplate">
-                                <tr class="row shadow-sm py-2 mb-3 bg-body rounded-3">
-                                    <div class="col-3">
-                                        <img id="productImage" class="img-fluid rounded p-0" src="" alt=""/>
-                                    </div>
-                                    <div class="col-2 text-center my-auto">
-                                        <td><a id="productLink" href="" class="link-dark"></a></td>
-                                    </div>
-                                    <td class="col-2 my-auto p-0">
-                                        <form>
-                                            <select id="productQuantity" class="border border-dark rounded-3 text-center pl-3 pr-10 py-1 z-10" name="quantity" id="quantity">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                        </form>
-                                    </td>
-                                    <div class="col-2 my-auto">
-                                        <td id="productPrice" class="text-center p-0">x€</td>
-                                    </div>
-                                    <div class="col-2 my-auto">
-                                        <td id="productTotalPrice" class="text-center p-0">x€</td>
-                                    </div>
-                                    <div class="col-1 my-auto">
-                                        <td><i class="fas fa-trash-alt"></i></td>
-                                    </div>
-                                </tr>
-                            </template>
-                        </tbody>
-                    </div>
-                    <div id="cartButtons" class="row mt-5 position-sticky bottom-0"></div>
+    <main class="container-fluid position-relative py-3">
+        <!--====================PANIER======================-->
+        <div class="container-fluid h-100">
+            <div id="products" class="row mt-5">
+                <!--Les elements du panier via JS-->
+            </div>
+            <div class="row">
+                <div id="sumTotal" class="col-10 col-md-8 mx-auto text-end">
+                    <!--Le Total du panier via JS-->
                 </div>
             </div>
-            <!--====================CONTACT / ADRESSE======================-->
-            <div id="checkout" class="container mt-5">
+            <div class="row mt-5">
+                <div class="col-6 col-md-3 offset-md-3">
+                    <a class="btn btn-primary w-100" href="../index.html"><span>Continuer mon shopping</span></a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="#down" id="orderBtn" class="btn btn-primary w-100" type="submit"><span>Commander</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!--====================CONTACT / ADRESSE======================-->
+        <div id="form-error"></div>
+        <form id="form" class="container-fluid mt-5" onsubmit="return beforeCreateOrder(event)">
+            <div id="checkout">
                 <!--Contacts and payment blocks, dynamically added with JS-->
             </div>
-            <div id="newFooter"></div>
+            <div id="confirmPurchase" class="d-none">
+                <button id="Submit" class="btn btn-primary mb-5 py-2 px-5" type="submit"><span>Valider</span></button>
+            </div>
+        </form>
+        <div id="newFooter" class="mt-5"></div>
     </main>
 
     <!--====================FOOTER======================-->
@@ -119,9 +101,9 @@
             </div>
         </div>
     </footer>
-
-    <!--Bootstrap v5,0 bundle links -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        showCartContent()
+    </script>
 </body>
 
 </html>

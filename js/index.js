@@ -1,44 +1,36 @@
-// Main function, auto called at load time
-;
-(async() => {
-    const products = await getProducts()
-    hydratePage(products)
-})()
+// Class Camera Api affecté dans une variable pour l'appeler de manière plus simple
+const api = new CameraApi()
 
-async function getProducts() {
-    return fetch(`${apiUrl}/api/cameras`)
-        .then((httpBodyResponse) => httpBodyResponse.json())
-        .then((products) => products)
-        .catch((error) => {
-            alert(
-                "La connexion au serveur n'a pas pu être effectué. Cela est certainement lié au COVID-19, veuillez attendre quelques secondes le temps qu'il mette son masque puis réesayez"
-            )
-        })
-}
+// Fonction qui récupère les données du serveur et les affiches.
+const loadData = async() => {
+    const productList = await api.getAll()
+    let containerOfProductCarousel = ""
+    let containerOfProductList = ""
+    for (const product of productList) {
+        document.getElementById("containerOfProductCarousel").innerHTML += `
+        <div class="carousel-item" data-bs-interval="3000">
+                <img src="${product.imageUrl}" class="d-block w-100" alt="${product.name}">
+        </div>`
+    }
 
-function hydratePage(products) {
-    // Remove loading boxes
-    document.getElementById('productsList').innerHTML = ''
-
-    // Loop over all products and displays them
-    products.forEach((product) => {
-        displayProduct(product)
+    const displayButton = document.getElementById("displayButton")
+    displayButton.addEventListener('click', () => {
+        for (const product of productList) {
+            document.getElementById("containerOfProductList").innerHTML += `
+        <div class="col-12 col-lg-4 mx-auto" onClick="redirectToProductPage('${product._id}')">
+            <div class="card img-thumbnail my-3">
+                <img id="productImage" class="card-img-top img-fluid rounded-top p-2" src="${product.imageUrl}" alt="${product.name}">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2 id="productName" class="card-title">${product.name}</h2>
+                        <p id="productPrice" class="card-text"><strong>${product.price}€</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `
+        }
+        // désactive le button après le clic
+        displayButton.disabled = 'true';
     })
-}
-
-function displayProduct(product) {
-    // Get template
-    const templateElt = document.getElementById('product')
-
-    // Clone template
-    const cloneElt = document.importNode(templateElt.content, true)
-
-    // Hydrate template
-    cloneElt.getElementById('productImage').src = product.imageUrl
-    cloneElt.getElementById('productName').textContent = product.name
-    cloneElt.getElementById('productDescription').textContent = product.description
-    cloneElt.getElementById('productLink').href = `/html/products.html?id=${product._id}`
-
-    // Display template
-    document.getElementById('productsList').appendChild(cloneElt)
 }
