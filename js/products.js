@@ -3,7 +3,7 @@
 const loadDataById = async() => {
     const camera = await api.getById(localStorage.getItem("productId"))
     document.getElementById("containerOfProduct").innerHTML =
-        `<div class="row h-100">
+        `<div class="row h-100 mb-5">
             <div class="col-12 col-lg-6 bg-dark d-flex align-items-center p-0 p-lg-5">
                 <div class="col-12 col-lg-8 mx-auto">
                     <img id="productImage" class="img-fluid rounded p-0" src="${camera.imageUrl}" alt="${camera.name}" />

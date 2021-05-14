@@ -13,14 +13,14 @@ const showCartContent = () => {
     if (!myShoppingCart.length) {
         blocOfMyShoppingCart =
             `
-        <div class="col-12 text-center">
-            <span>Votre panier est vide !</span>
+        <div class="col-12 text-center mt-5">
+            <span class="h3">Votre panier est vide !</span>
             <hr class="line my-5">
         </div>
         <div class="col-6 mx-auto mt-3">
             <a class="btn btn-dark w-100" href="../index.html"><span>Continuer mon shopping</span></a>
         </div>`
-        document.getElementById('products').innerHTML = blocOfMyShoppingCart
+        document.getElementById('main').innerHTML = blocOfMyShoppingCart
 
     } else { //Sinon
 
@@ -194,18 +194,18 @@ const showCartContent = () => {
         let newFooter = document.querySelector('#newFooter');
         newFooter.innerHTML = `
         <footer class="container-fluid mt-5 position-absolute bottom-0 my-auto bg-light">
-            <div class="row">
-                <div class="col">
-                    <ul class="list-inline text-center my-auto p-3">
-                        <!--links to adapt-->
-                        <li class="list-inline-item"><a href="#" class="text-decoration-none text-body">À propos de nous</a></li>
-                        <li class="list-inline-item">&middot;</li>
-                        <li class="list-inline-item"><a href="#" class="text-decoration-none text-body">Confidentialité</a></li>
-                        <li class="list-inline-item">&middot;</li>
-                        <li class="list-inline-item"><a href="#" class="text-decoration-none text-body">Conditions Générales</a></li>
-                    </ul>
+        <div class="row">
+            <div class="col">
+                <div class="text-center my-auto p-3">
+                    <!--links to adapt-->
+                    <a href="#" class="text-decoration-none text-body">À propos de nous</a>
+                    <span class="mx-2">&middot;</span>
+                    <a href="#" class="text-decoration-none text-body">Confidentialité</a>
+                    <span class="mx-2">&middot;</span>
+                    <a href="#" class="text-decoration-none text-body">Conditions Générales</a>
                 </div>
             </div>
+        </div>
         </footer>`;
     };
 }

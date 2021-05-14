@@ -31,6 +31,27 @@ const loadData = async() => {
         `
         }
         // désactive le button après le clic
-        displayButton.disabled = 'true';
+        displayButton.disabled = true;
+
+        // L'ajout de contenu vient agrandir le viewport et fixe le footer au milieu de la nouvelle page
+        // A cause de la position absolue du footer, on le supprime et on en rajoute un nouveau en bas
+        const footer = document.querySelector('#footer');
+        footer.classList = "d-none";
+        let newFooter = document.querySelector('#newFooter');
+        newFooter.innerHTML = `
+        <footer class="container-fluid mt-5 position-absolute bottom-0 my-auto bg-light">
+        <div class="row">
+            <div class="col">
+                <div class="text-center my-auto p-3">
+                    <!--links to adapt-->
+                    <a href="#" class="text-decoration-none text-body">À propos de nous</a>
+                    <span class="mx-2">&middot;</span>
+                    <a href="#" class="text-decoration-none text-body">Confidentialité</a>
+                    <span class="mx-2">&middot;</span>
+                    <a href="#" class="text-decoration-none text-body">Conditions Générales</a>
+                </div>
+            </div>
+        </div>
+        </footer>`;
     })
 }
