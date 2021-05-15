@@ -1,7 +1,9 @@
 class CameraApi {
 
     constructor() {
-        this.apiUrl = location.hostname === 'localhost' || location.hostname === '127.0.0.1' ? "http://localhost:3000/api/cameras" : 'https://oc-p5-orinoco.herokuapp.com'
+        this.apiUrl = location.hostname === 'localhost' || location.hostname === '127.0.0.1' ?
+            "http://localhost:3000/api/cameras" :
+            'https://oc-p5-orinoco.herokuapp.com/api/cameras'
     }
 
     getAll() {
