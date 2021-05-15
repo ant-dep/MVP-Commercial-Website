@@ -7,6 +7,7 @@
     <!--Boostrap framework link from official website-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/d28e6df8ab.js" crossorigin="anonymous"></script>
+    <link href="../style.css" rel="stylesheet">
     <script src="/js/api.js"></script>
     <script src="/js/index.js"></script>
     <script src="/js/products.js"></script>
@@ -21,73 +22,91 @@
 
 <body class="vh-100">
     <!--====================HEADER======================-->
-    <header class="bg-light">
-        <div class="container-fluid px-3">
-            <div class="row">
-                <nav class="col navbar navbar-expand navbar-light">
-                    <a class="navbar-brand" href="../index.html">
-                        <img src="../images/orinoco_logo_detoure.png" width="100" height="50" alt="Orinoco logo" />
-                    </a>
-                    <!--navbar collapse to display icon/vertical tabs instead of fixed links on small screen devices-->
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
-                        <ul class="navbar-nav">
-                            <li class="nav-item active">
-                                <a class="nav-link fw-bold px-3" href="../index.html">Accueil</a>
-                            </li>
-                            <li class="nav-item">
-                                <a id="cart" class="nav-link fw-bold border border-dark rounded-3 px-2" href="../html/cart.html">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart4" viewBox="0 0 20 20">
-                                        <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
-                                    </svg><span></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
+    <header class="container-fluid px-3 bg-Orinoco">
+        <div class="row">
+            <nav class="col navbar navbar-expand navbar-light py-0">
+                <a class="navbar-brand" href="../index.html">
+                    <img src="../images/orinoco_logo_detoure.png" width="100" height="50" alt="Orinoco logo" />
+                </a>
+                <!--navbar collapse to display icon/vertical tabs instead of fixed links on small screen devices-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link fw-bold px-3 pt-3" href="../index.html">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="cart" class="nav-link" href="../html/cart.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-cart4 mx-3" viewBox="0 0 20 20">
+                                            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                                        </svg><span></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
     </header>
 
     <!--====================MAIN======================-->
-    <main id="main" class="container-fluid position-relative py-3">
+    <main id="main" class="container-fluid position-relative py-3 px-0">
         <!--====================PANIER======================-->
         <div class="container-fluid h-100">
-            <div id="products" class="row mt-5">
+            <div id="products" class="row mt-2">
                 <!--Les elements du panier via JS-->
             </div>
             <div class="row">
-                <div id="sumTotal" class="col-10 col-md-8 mx-auto text-end">
+                <div id="sumTotal" class="col-10 col-md-10 mx-auto mt-2 text-end">
                     <!--Le Total du panier via JS-->
                 </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-6 col-md-3 offset-md-3">
-                    <a class="btn btn-primary w-100" href="../index.html"><span>Continuer mon shopping</span></a>
+                <div class="col-10 offset-1 col-md-3 offset-md-8 mt-5 p-0">
+                    <label for="promoCode" class="d-flex justify-content-between">
+                                <input id="promoCode" class="border border-light w-50 p-2" type="text" placeholder="Un code promo?">
+                    <button class="btn btn-light rounded-3 text-center w-50 mx-0 p-2">Appliquer</button>
+                </label>
                 </div>
-                <div class="col-6 col-md-3">
-                    <a href="#down" id="orderBtn" class="btn btn-primary w-100" type="submit"><span>Commander</span></a>
+            </div>
+            <div class="row mb-5">
+                <div class="col-10 offset-1 col-md-3 offset-md-8 mt-3 p-0">
+                    <a href="#down" id="orderBtn" class="btn bg-Orinoco w-100 p-3" type="submit"><span>Continuer</span></a>
+                </div>
+                <hr class="col-10 offset-1 col-md-3 offset-md-8 mt-4 line">
+                <div class="col-10 offset-1 col-md-3 offset-md-8 mt-3 border border-dark rounded-3 p-3">
+                    <div class="col-2 mx-auto bg-white">
+                        <a href="#">
+                            <img class="img-fluid" src="../images/Apple_Pay_logo.png" alt="Apple Pay logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-10 offset-1 col-md-3 offset-md-8 mt-3 border border-dark rounded-3 p-1">
+                    <div class="col-2 mx-auto bg-white">
+                        <a href="#">
+                            <img class="img-fluid" src="../images/Google_Pay_logo.png" alt="Apple Pay logo">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!--====================CONTACT / ADRESSE======================-->
         <div id="form-error"></div>
-        <form id="form" class="container-fluid mt-5" onsubmit="return beforeCreateOrder(event)">
+        <form id="form" class="container-fluid my-5 position-relative" onsubmit="return beforeCreateOrder(event)">
             <div id="checkout">
                 <!--Contacts and payment blocks, dynamically added with JS-->
             </div>
             <div id="confirmPurchase" class="d-none">
-                <button id="Submit" class="btn btn-primary mb-5 py-2 px-5" type="submit"><span>Valider</span></button>
+                <div class="col-10 offset-1 col-md-4 offset-md-8">
+                    <button id="Submit" class="w-100 btn bg-Orinoco mb-5 p-3" type="submit"><span class="w-100">Commander</span></button>
+                </div>
             </div>
         </form>
-        <div id="newFooter" class="mt-5"></div>
+        <div id="newFooter"></div>
     </main>
 
     <!--====================FOOTER======================-->
-    <footer id="footer" class="container-fluid mt-5 position-absolute bottom-0 my-auto bg-light">
+    <footer id="footer" class="container-fluid mt-5 position-sticky bottom-0 my-auto bg-Orinoco">
         <div class="row">
             <div class="col">
                 <ul class="list-inline text-center my-auto p-3">

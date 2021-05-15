@@ -39,7 +39,7 @@ const loadData = async() => {
         footer.classList = "d-none";
         let newFooter = document.querySelector('#newFooter');
         newFooter.innerHTML = `
-        <footer class="container-fluid mt-5 position-absolute bottom-0 my-auto bg-light">
+        <footer class="container-fluid mt-5 position-absolute bottom-0 my-auto bg-Orinoco">
         <div class="row">
             <div class="col">
                 <div class="text-center my-auto p-3">

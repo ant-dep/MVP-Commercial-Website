@@ -15,6 +15,9 @@ const showCartContent = () => {
             `
         <div class="col-12 text-center mt-5">
             <span class="h3">Votre panier est vide !</span>
+            <div class="col-12">
+            <img class="img-fluid" src="../images/empty_cart.png" alt="logo panier vide">
+            </div>
             <hr class="line my-5">
         </div>
         <div class="col-8 col-md-4 mx-auto mt-3">
@@ -30,14 +33,14 @@ const showCartContent = () => {
             // Créer un nouveau bloc html pour chaque article blocOfMyShoppingCart  (avec les valeurs de mon panier)
             blocOfMyShoppingCart +=
                 `<div class="col-12 col-md-10 mx-auto">
-                        <div class="row shadow-sm py-2 mb-3 bg-body rounded-3">
+                    <div class="row shadow-sm py-2 mb-3 bg-body rounded-3">
                             <div class="col-3">
                                 <img class="img-fluid rounded p-0" src="${product.imageUrl}" alt="${product.name}" />
                             </div>
-                            <div class="col-2 text-center my-auto">
+                            <div class="col-3 my-auto">
                                 <p class="text-center my-auto" onClick="redirectToProductPage('${product._id}')">${product.name}</p>
                             </div>
-                            <div class="col-2 my-auto text-center my-auto">
+                            <div class="col-6 d-flex justify-content-around my-auto">
                                 <select id="select-${product._id}" class="border border-dark rounded-3 text-center pl-3 pr-10 py-1 z-10 name="quantityOfProduct">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -45,18 +48,11 @@ const showCartContent = () => {
                                     <option value="4">4</option>
                                     <option value="5">5</option>
                                 </select>
-                            </div>
-                            <div class="col-2 my-auto">
-                                <p id="productPrice" class="text-center p-0 my-auto">${product.price}€</p>
-                            </div>
-                            <div class="col-2 my-auto">
                                 <p id="totalProduct-${product._id}" class="fw-bold text-center p-0 my-auto">${(product.price * product.quantity).toFixed(2)}€</p>
-                            </div>
-                            <div class="col-1 my-auto">
                                 <i class="fas fa-trash-alt" onclick="removeProduct('${product._id}')"></i>
                             </div>
-                        </div>
-                    </div>`
+                    </div>
+                </div>`
         }
 
         document.getElementById('products').innerHTML = blocOfMyShoppingCart
@@ -155,27 +151,29 @@ const showCartContent = () => {
                     <h3 class="d-flex justify-content-between align-items-center">Paiement</h3>
                     <div class="row">
                         <div class="col">
-                            <span class="type d-block mt-3 mb-1">Type de Carte</span><label class="radio"> <input type="radio" name="card" value="payment" checked> <span><img width="30" src="https://img.icons8.com/color/48/000000/mastercard.png" /></span> </label>
+                            <span class="type d-block mt-3 mb-2">Type de Carte</span><label class="radio"> <input type="radio" name="card" value="payment" checked> <span><img width="30" src="https://img.icons8.com/color/48/000000/mastercard.png" /></span> </label>
                             <label class="radio"> <input type="radio" name="card" value="payment"> <span><img width="30" src="https://img.icons8.com/officel/48/000000/visa.png" /></span></label>
                             <label class="radio"> <input type="radio" name="card" value="payment"> <span><img width="30" src="https://img.icons8.com/ultraviolet/48/000000/amex.png" /></span></label>
                             <label class="radio"> <input type="radio" name="card" value="payment"> <span><img width="30" src="https://img.icons8.com/officel/48/000000/paypal.png" /></span></label>
                         </div>
                     </div>
-                    <div><label class="credit-card-label">Porteur de la Carte</label><input class="form-control credit-inputs" type="text"></div>
-                    <div><label class="credit-card-label">Numéro de la Carte</label><input class="form-control credit-inputs" type="text" pattern="[0-9]*" inputmode="numeric" maxlength="16" placeholder="0000 0000 0000 0000"></div>
-                    <div class="row">
+                    <div><label class="credit-card-label mt-2">Porteur de la Carte</label><input class="form-control credit-inputs" type="text"></div>
+                    <div><label class="credit-card-label mt-2">Numéro de la Carte</label><input class="form-control credit-inputs" type="text" pattern="[0-9]*" inputmode="numeric" maxlength="16" placeholder="0000 0000 0000 0000"></div>
+                    <div class="row mt-2">
                     <div class="col-md-6"><label class="credit-card-label">Expiration</label><input class="form-control credit-inputs" type="text" pattern="(?:0[1-9]|1[0-2])/[0-9]{2}" title="Enter a date in this format MM/YY" maxlength="5" placeholder="mm/yy"></div>
                         <div class="col-md-6"><label class="credit-card-label">CVV</label><input class="form-control credit-inputs" type="text" pattern="[0-9]*" inputmode="numeric" maxlength="3" placeholder="000"></div>
                     </div>
-                    <hr class="line">
-                    <div class="d-flex justify-content-between"><span>Total(HT)</span><span id="total-ht"></span></div>
-                    <div class="d-flex justify-content-between"><span>TVA</span><span id="TVA"></span></div>
-                    <div class="d-flex justify-content-between mt-2"><span>Total(TTC)</span><span id="total-ttc"></span></div>
+                    <div class="mt-5 justify-self-end">
+                        <hr class="line mb-5">
+                        <div class="d-flex justify-content-between"><span>Total(HT)</span><span id="total-ht"></span></div>
+                        <div class="d-flex justify-content-between"><span>TVA</span><span id="TVA"></span></div>
+                        <div class="d-flex justify-content-between mt-2"><span>Total(TTC)</span><span id="total-ttc"></span></div>
+                    </div>
                 </div>
             </div>
         </div>`;
 
-        document.getElementById("confirmPurchase").classList = "d-block";
+        document.getElementById("confirmPurchase").classList = "d-block row";
         // On ajoute la TVA et le calcul HT et on réaffiche le TTC
         const totalTTC = document.querySelector('#total-ttc');
         const totalPriceOfCart = getCartTotalPrice()
@@ -191,21 +189,21 @@ const showCartContent = () => {
         // A cause de la position absolue du footer, on le supprime et on en rajoute un nouveau en bas
         const footer = document.querySelector('#footer');
         footer.classList = "d-none";
-        let newFooter = document.querySelector('#newFooter');
+        const newFooter = document.querySelector('#newFooter');
         newFooter.innerHTML = `
-        <footer class="container-fluid mt-5 position-absolute bottom-0 my-auto bg-light">
-        <div class="row">
-            <div class="col">
-                <div class="text-center my-auto p-3">
-                    <!--links to adapt-->
-                    <a href="#" class="text-decoration-none text-body">À propos de nous</a>
-                    <span class="mx-2">&middot;</span>
-                    <a href="#" class="text-decoration-none text-body">Confidentialité</a>
-                    <span class="mx-2">&middot;</span>
-                    <a href="#" class="text-decoration-none text-body">Conditions Générales</a>
+        <footer class="container-fluid mt-5 position-absolute bottom-0 bg-Orinoco">
+            <div class="row">
+                <div class="col">
+                    <div class="text-center my-auto p-3">
+                        <!--links to adapt-->
+                        <a href="#" class="text-decoration-none text-body">À propos de nous</a>
+                        <span class="mx-2">&middot;</span>
+                        <a href="#" class="text-decoration-none text-body">Confidentialité</a>
+                        <span class="mx-2">&middot;</span>
+                        <a href="#" class="text-decoration-none text-body">Conditions Générales</a>
+                    </div>
                 </div>
             </div>
-        </div>
         </footer>`;
     };
 }
