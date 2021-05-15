@@ -17,7 +17,7 @@ const showCartContent = () => {
             <span class="h3">Votre panier est vide !</span>
             <hr class="line my-5">
         </div>
-        <div class="col-6 mx-auto mt-3">
+        <div class="col-8 col-md-4 mx-auto mt-3">
             <a class="btn btn-dark w-100" href="../index.html"><span>Continuer mon shopping</span></a>
         </div>`
         document.getElementById('main').innerHTML = blocOfMyShoppingCart

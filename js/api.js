@@ -36,7 +36,7 @@ class CameraApi {
                     //Divise le prix / 100 pour correspondre aux euros au lieu des centimes avec la fonction map()
                 data.price = data.price / 100
                 return data
-            }) //JSON.parse() = transforme du text en JSON
+            }) //JSON.parse() = transforme du texte en JSON
             .catch(error => console.log('error', error));
 
         return result
