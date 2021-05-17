@@ -32,7 +32,7 @@ const showCartContent = () => {
 
             // Créer un nouveau bloc html pour chaque article blocOfMyShoppingCart  (avec les valeurs de mon panier)
             blocOfMyShoppingCart +=
-                `<div class="col-12 col-md-10 mx-auto">
+                `<div class="col-12 col-md-7 mx-auto">
                     <div class="row shadow-sm py-2 mb-3 bg-body rounded-3">
                             <div class="col-3">
                                 <img class="img-fluid rounded p-0" src="${product.imageUrl}" alt="${product.name}" />
@@ -49,7 +49,7 @@ const showCartContent = () => {
                                     <option value="5">5</option>
                                 </select>
                                 <p id="totalProduct-${product._id}" class="fw-bold text-center p-0 my-auto">${(product.price * product.quantity).toFixed(2)}€</p>
-                                <i class="fas fa-trash-alt" onclick="removeProduct('${product._id}')"></i>
+                                <span class="btn text-center p-0 my-auto" onclick="removeProduct('${product._id}')"><i class="fas fa-trash-alt"></i></span>
                             </div>
                     </div>
                 </div>`
@@ -140,9 +140,9 @@ const showCartContent = () => {
                     </div>
                 </div>
                 <div class="form-group col-md-8 mt-3">
-                    <label for="commentaire">
+                    <label for="message">
                         Commentaire
-                    </label><textarea id="commentaire" class="form-control" rows="4" cols="50" name="Commentaire"></textarea>
+                    </label><textarea id="message" class="form-control" rows="4" cols="50" name="Commentaire"></textarea>
                 </div>
             </div>
             <!--====================PAIEMENT======================-->
@@ -184,27 +184,6 @@ const showCartContent = () => {
         // toFixed() est utilisée pour reduire le nombre de décimales du total nombre de (2)
         TVAContainer.innerHTML += `<em>${(totalPriceOfCart - (totalPriceOfCart / TVA)).toFixed(2)}€</em>`;
         totalTTC.innerHTML += `<span class="fw-bolder fst-italic">${totalPriceOfCart}€</span>`;
-
-        // L'ajout de contenu vient agrandir le viewport et fixe le footer au milieu de la nouvelle page
-        // A cause de la position absolue du footer, on le supprime et on en rajoute un nouveau en bas
-        const footer = document.querySelector('#footer');
-        footer.classList = "d-none";
-        const newFooter = document.querySelector('#newFooter');
-        newFooter.innerHTML = `
-        <footer class="container-fluid mt-5 position-absolute bottom-0 bg-Orinoco">
-            <div class="row">
-                <div class="col">
-                    <div class="text-center my-auto p-3">
-                        <!--links to adapt-->
-                        <a href="#" class="text-decoration-none text-body">À propos de nous</a>
-                        <span class="mx-2">&middot;</span>
-                        <a href="#" class="text-decoration-none text-body">Confidentialité</a>
-                        <span class="mx-2">&middot;</span>
-                        <a href="#" class="text-decoration-none text-body">Conditions Générales</a>
-                    </div>
-                </div>
-            </div>
-        </footer>`;
     };
 }
 
@@ -215,7 +194,7 @@ const beforeCreateOrder = (e) => {
     const contact = getUserData();
     const errors = []
     console.log('contact', contact)
-    const alphaRegExp = /^[A-Za-zàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ]+$/
+    const alphaRegExp = /^[A-Za-zàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\s]+$/
 
     document.getElementById('firstName').classList.remove('good', 'error')
     document.getElementById('lastName').classList.remove('good', 'error')
@@ -226,7 +205,7 @@ const beforeCreateOrder = (e) => {
     // Test firstName
     let firstNameValid = true
     if (!alphaRegExp.test(contact.firstName)) {
-        errors.push('Le prénom doit uniquement contenir des lettres')
+        errors.push.alert(('Le prénom doit uniquement contenir des lettres'))
         firstNameValid = false
     }
     document.getElementById('firstName').classList.add(firstNameValid ? 'good' : 'error')
@@ -234,7 +213,7 @@ const beforeCreateOrder = (e) => {
     // Test lastname
     let lastNameValid = true
     if (!alphaRegExp.test(contact.lastName)) {
-        errors.push('Le nom doit uniquement contenir des lettres')
+        errors.push.alert(('Le nom doit uniquement contenir des lettres'))
         lastNameValid = false
     }
     document.getElementById('lastName').classList.add(lastNameValid ? 'good' : 'error')
@@ -242,7 +221,7 @@ const beforeCreateOrder = (e) => {
     // Test city
     let cityValid = true
     if (!alphaRegExp.test(contact.city)) {
-        errors.push('La ville doit uniquement contenir des lettres')
+        errors.push(alert('La ville doit uniquement contenir des lettres'))
         cityValid = false
     }
     document.getElementById('city').classList.add(cityValid ? 'good' : 'error')

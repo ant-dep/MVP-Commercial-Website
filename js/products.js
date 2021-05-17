@@ -14,17 +14,17 @@ const loadDataById = async() => {
                 <p><strong>Description du produit</strong></p>
                 <p id="productDescription">${camera.description}</p>
                 <label for="lense" class="my-3"><strong>Choisissez la couleur de lentille <em>(optionnel)</em></strong>
-                    <select class="form-control border border-gray">
-                        <option id="lense" class="text-center border border-gray py-2"></option>
-                        <option class="text-center">Aucune</option>
+                    <select id="lensesBlock" class="form-control border border-gray">
                     </select>
                 </label>
-                <button id="btnAddTo" class="btn btn-dark my-5" onclick="addToShoppingCart('${camera._id}')">Ajouter au panier <span id="productPrice">${camera.price}€</span></button>
+                <button id="btnAddTo" class="d-flex justify-content-around bg-dark gradient-box rounded-3 px-3 py-2 my-5" onclick="addToShoppingCart('${camera._id}')"><span class="text-center text-white">Ajouter au panier -<span id="productPrice"> ${camera.price}€</span></span></button>
             </div>
         </div>`
 
-
-    camera.lenses.forEach((lense) => {
-        document.getElementById("lense").innerHTML += lense
-    })
+    // on boucle sur les différentes lenses de "cameras" et on les affiche en tant qu'"option" du menu "select"
+    const lenses = camera.lenses
+    const lensesBlock = document.getElementById('lensesBlock')
+    for (const lense of lenses) {
+        lensesBlock.innerHTML += `<option class="text-center border border-gray py-2">${lense}</option>`
+    }
 }

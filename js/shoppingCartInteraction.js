@@ -1,5 +1,4 @@
 // Fonction qui permet d'ajouter un produit dans le panier. Utilisation du Json.parse() et Json.stringify pour "traduire" les données reçus et envoyées
-
 const addToShoppingCart = async(productId) => {
     const product = await api.getById(productId);
     const myShoppingCart = localStorage.myShoppingCart ?
@@ -18,7 +17,6 @@ const addToShoppingCart = async(productId) => {
 };
 
 // Fonction qui permet de retirer complétement un produit du panier
-
 const removeProduct = (productId) => {
     // Récupérer le panier dans le local storage
     const myShoppingCart = JSON.parse(localStorage.myShoppingCart);
@@ -34,7 +32,6 @@ const removeProduct = (productId) => {
 };
 
 // Fonction pour retirer l'intégralité du panier
-
 const removeShoppingCart = () => {
     localStorage.removeItem("myShoppingCart");
     location.reload();
@@ -78,9 +75,12 @@ const getUserData = () => {
     const contact = {
         firstName: document.getElementById("firstName").value,
         lastName: document.getElementById("lastName").value,
-        address: document.getElementById("address").value,
-        city: document.getElementById("city").value,
         email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        address: document.getElementById("address").value,
+        zipcode: document.getElementById("zipcode").value,
+        city: document.getElementById("city").value,
+        message: document.getElementById("message").value,
     };
     return contact;
 };

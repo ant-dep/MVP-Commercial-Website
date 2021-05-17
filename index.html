@@ -23,8 +23,7 @@
     <meta description="Orinoco, notre nouvelle marque d'appareils photos et de caméras vintage!">
 </head>
 
-<body class="vh-100">
-
+<body class="d-flex flex-column min-vh-100">
     <!--====================HEADER======================-->
     <header class="container-fluid px-3 bg-Orinoco">
         <div class="row">
@@ -55,11 +54,11 @@
     </header>
 
     <!--====================MAIN======================-->
-    <main class="container-fluid position-relative py-3">
+    <main class="container-fluid position-relative py-2">
         <!--====================PICTURES CAROUSEL======================-->
         <div class="container-fluid p-0">
             <div class="row">
-                <div class="col-12 col-lg-8 mx-auto my-4 pb-5">
+                <div class="col-12 col-lg-8 mx-auto mb-2 pb-5">
                     <!--bottom indicators of active pictures within the carousel : small bars-->
                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
@@ -86,8 +85,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-8 col-md-5 mx-auto">
-                    <a href="#containerOfProductList" id="displayButton" class="d-block mx-auto btn bg-Orinoco rounded-pill border border-dark my-5"><span class="h1 text-center">Nos caméras vintage</span></a>
+                <div class="col-8 col-md-5 mx-auto text-center">
+                    <button id="displayButton" class="btn btn bg-Orinoco gradient-box rounded-3 px-3 py-2 my-5" type="button">
+                        <h1 class="h3 text-center mx-auto clr-Orinoco">Nos caméras vintage</h1>
+                    </button>
                 </div>
             </div>
         </div>
@@ -98,14 +99,13 @@
 
             </div>
         </div>
-        <div id="newFooter" class="mt-5"></div>
     </main>
     <!--====================FOOTER======================-->
-    <footer id="footer" class="container-fluid mt-5 position-sticky bottom-0 my-auto bg-Orinoco">
-        <div class="row">
-            <div class="col">
-                <div class="text-center my-auto p-3">
-                    <!--links to adapt-->
+    <footer id="footer" class="container-fluid mt-auto bg-Orinoco">
+        <div class="row p-2 my-1">
+            <div class="col-12">
+                <div class="text-center my-auto">
+                    <!-- content to create and links to adapt-->
                     <a href="#" class="text-decoration-none text-body">À propos de nous</a>
                     <span class="mx-2">&middot;</span>
                     <a href="#" class="text-decoration-none text-body">Confidentialité</a>
@@ -113,7 +113,22 @@
                     <a href="#" class="text-decoration-none text-body">Conditions Générales</a>
                 </div>
             </div>
-        </div>
+            <div class="col-12">
+                <div class="row text-center mt-3">
+                    <div class="col-12">
+                        <!--social media to create and links to adapt-->
+                        <div class="d-flex justify-content-center align-items-center">
+                            <a href="#"><i class="fab fa-linkedin fa-2x clr-Orinoco"></i></a>
+                            <span class="mx-3 my-auto">&middot;</span>
+                            <a href="#"><i class="fab fa-facebook-square fa-2x clr-Orinoco"></i></a>
+                            <span class="mx-3 my-auto">&middot;</span>
+                            <a href="#"><i class="fab fa-instagram fa-2x clr-Orinoco"></i></a>
+                            <span class="mx-3 my-auto">&middot;</span>
+                            <a href="#"><i class="fab fa-twitter fa-2x clr-Orinoco"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </footer>
 
     <!--BS v5,0 bundle links -->

@@ -20,7 +20,7 @@
     <meta description="Orinoco, notre nouvelle marque d'appareils photos vintage!">
 </head>
 
-<body class="vh-100">
+<body class="d-flex flex-column min-vh-100">
     <!--====================HEADER======================-->
     <header class="container-fluid px-3 bg-Orinoco">
         <div class="row">
@@ -54,8 +54,14 @@
     <main id="main" class="container-fluid position-relative py-3 px-0">
         <!--====================PANIER======================-->
         <div class="container-fluid h-100">
-            <div id="products" class="row mt-2">
-                <!--Les elements du panier via JS-->
+            <div class="row">
+                <div class="col-12 col-md-6 mx-auto text-center my-2">
+                    <h1 class="h2">Mon Panier</h1>
+                    <hr class="line">
+                </div>
+                <div id="products" class="mt-2">
+                    <!--Les elements du panier via JS-->
+                </div>
             </div>
             <div class="row">
                 <div id="sumTotal" class="col-10 col-md-10 mx-auto mt-2 text-end">
@@ -70,7 +76,7 @@
             </div>
             <div class="row mb-5">
                 <div class="col-10 offset-1 col-md-3 offset-md-8 mt-3 p-0">
-                    <a href="#down" id="orderBtn" class="btn bg-Orinoco w-100 p-3" type="submit"><span>Continuer</span></a>
+                    <a href="#down" id="orderBtn" class="btn btn bg-Orinoco gradient-box rounded-3 px-3 py-2 w-100" type="submit"><span class="fw-bold text-center mx-auto clr-Orinoco">Continuer</span></a>
                 </div>
                 <hr class="col-10 offset-1 col-md-3 offset-md-8 mt-4 line">
                 <div class="col-10 offset-1 col-md-3 offset-md-8 mt-3 border border-dark rounded-3 p-3">
@@ -80,7 +86,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-10 offset-1 col-md-3 offset-md-8 mt-3 border border-dark rounded-3 p-1">
+                <div class="col-10 offset-1 col-md-3 offset-md-8 mt-3 border border-dark rounded-3 py-1">
                     <div class="col-2 mx-auto bg-white">
                         <a href="#">
                             <img class="img-fluid" src="../images/Google_Pay_logo.png" alt="Apple Pay logo">
@@ -92,33 +98,47 @@
 
         <!--====================CONTACT / ADRESSE======================-->
         <div id="form-error"></div>
-        <form id="form" class="container-fluid my-5 position-relative" onsubmit="return beforeCreateOrder(event)">
+        <form id="form" class="container mx-auto my-5" onsubmit="return beforeCreateOrder(event)">
             <div id="checkout">
                 <!--Contacts and payment blocks, dynamically added with JS-->
             </div>
             <div id="confirmPurchase" class="d-none">
                 <div class="col-10 offset-1 col-md-4 offset-md-8">
-                    <button id="Submit" class="w-100 btn bg-Orinoco mb-5 p-3" type="submit"><span class="w-100">Commander</span></button>
+                    <button id="Submit" class="w-100 btn btn bg-Orinoco gradient-box rounded-3 mb-5 p-3" type="submit"><span class="text-center mx-auto clr-Orinoco fw-bold w-100">Commander</span></button>
                 </div>
             </div>
         </form>
-        <div id="newFooter"></div>
     </main>
 
     <!--====================FOOTER======================-->
-    <footer id="footer" class="container-fluid mt-5 position-sticky bottom-0 my-auto bg-Orinoco">
-        <div class="row">
-            <div class="col">
-                <ul class="list-inline text-center my-auto p-3">
-                    <!--links to adapt-->
-                    <li class="list-inline-item"><a href="#" class="text-decoration-none text-body">À propos de nous</a></li>
-                    <li class="list-inline-item">&middot;</li>
-                    <li class="list-inline-item"><a href="#" class="text-decoration-none text-body">Confidentialité</a></li>
-                    <li class="list-inline-item">&middot;</li>
-                    <li class="list-inline-item"><a href="#" class="text-decoration-none text-body">Conditions Générales</a></li>
-                </ul>
+    <footer id="footer" class="container-fluid mt-auto bg-Orinoco">
+        <div class="row p-2 my-1">
+            <div class="col-12">
+                <div class="text-center my-auto">
+                    <!-- content to create and links to adapt-->
+                    <a href="#" class="text-decoration-none text-body">À propos de nous</a>
+                    <span class="mx-2">&middot;</span>
+                    <a href="#" class="text-decoration-none text-body">Confidentialité</a>
+                    <span class="mx-2">&middot;</span>
+                    <a href="#" class="text-decoration-none text-body">Conditions Générales</a>
+                </div>
             </div>
-        </div>
+            <div class="col-12">
+                <div class="row text-center mt-3">
+                    <div class="col-12">
+                        <!--social media to create and links to adapt-->
+                        <div class="d-flex justify-content-center align-items-center">
+                            <a href="#"><i class="fab fa-linkedin fa-2x clr-Orinoco"></i></a>
+                            <span class="mx-3 my-auto">&middot;</span>
+                            <a href="#"><i class="fab fa-facebook-square fa-2x clr-Orinoco"></i></a>
+                            <span class="mx-3 my-auto">&middot;</span>
+                            <a href="#"><i class="fab fa-instagram fa-2x clr-Orinoco"></i></a>
+                            <span class="mx-3 my-auto">&middot;</span>
+                            <a href="#"><i class="fab fa-twitter fa-2x clr-Orinoco"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </footer>
     <script type="text/javascript">
         showCartContent()

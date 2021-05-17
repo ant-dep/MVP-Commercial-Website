@@ -23,7 +23,7 @@
     <meta description="Orinoco, notre nouvelle marque d'appareils photos vintage!">
 </head>
 
-<body class="vh-100 position-relative">
+<body class="d-flex flex-column min-vh-100">
     <!--====================HEADER======================-->
     <header class="container-fluid position-absolute top-0 bg-Orinoco">
         <div class="row">
@@ -54,8 +54,10 @@
     </header>
     <!--====================MAIN======================-->
     <main>
+        <!--====================PRODUCT INFO via JS======================-->
         <div id="containerOfProduct" class="container-fluid vh-100 pt-4 overflow-scroll">
         </div>
+        <!--====================POP-UP======================-->
         <div id="overlay" class="d-none">
             <div class="container-fluid position-absolute top-0 start-0 bg-light h-50 py-5">
                 <div class="row my-5">
@@ -64,31 +66,52 @@
                         <span class="h3"> L'article à bien été ajouté à votre panier ! </span>
                     </div>
                 </div>
-                <div class="row my-5">
-                    <div class="col-12 col-md-6 mx-auto text-center">
-                        <button id="returnToProductPage" class="btn btn-dark rounded-3 mx-2" onclick="returnToHome()"> Continuer mes
-                    achats </button>
-                        <button type="button" id="goToShoppingCartPage" class="btn btn-dark rounded-3 mx-2" onclick="goToShoppingCartPage()">
-                    Voir mon panier </button>
+                <div class="col-10 col-md-6 mx-auto">
+                    <div class="row my-5">
+                        <div class="col-12 col-md-6 text-center mx-auto">
+                            <button id="returnToProductPage" class="d-flex justify-content-around bg-dark gradient-box rounded-3 px-3 py-2 my-5" onclick="returnToHome()">
+                            <span class="mx-auto text-white">Continuer mes achats</span>
+                        </button>
+                        </div>
+                        <div class="col-12 col-md-6 text-center mx-auto">
+                            <button type="button" id="goToShoppingCartPage" class="d-flex justify-content-around bg-dark gradient-box rounded-3 px-3 py-2 my-5" onclick="goToShoppingCartPage()">
+                            <span class="mx-auto text-white">Voir mon panier</span>
+                        </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
     <!--====================FOOTER======================-->
-    <footer class="container-fluid position-absolute bottom-0 bg-Orinoco">
-        <div class="row">
-            <div class="col">
-                <ul class="list-inline text-center my-auto p-3">
-                    <!--links to adapt-->
-                    <li class="list-inline-item"><a href="#" class="text-decoration-none text-body">À propos de nous</a></li>
-                    <li class="list-inline-item">&middot;</li>
-                    <li class="list-inline-item"><a href="#" class="text-decoration-none text-body">Confidentialité</a></li>
-                    <li class="list-inline-item">&middot;</li>
-                    <li class="list-inline-item"><a href="#" class="text-decoration-none text-body">Conditions Générales</a></li>
-                </ul>
+    <footer id="footer" class="container-fluid mt-auto bg-Orinoco">
+        <div class="row p-2 my-1">
+            <div class="col-12">
+                <div class="text-center my-auto">
+                    <!-- content to create and links to adapt-->
+                    <a href="#" class="text-decoration-none text-body">À propos de nous</a>
+                    <span class="mx-2">&middot;</span>
+                    <a href="#" class="text-decoration-none text-body">Confidentialité</a>
+                    <span class="mx-2">&middot;</span>
+                    <a href="#" class="text-decoration-none text-body">Conditions Générales</a>
+                </div>
             </div>
-        </div>
+            <div class="col-12">
+                <div class="row text-center mt-3">
+                    <div class="col-12">
+                        <!--social media to create and links to adapt-->
+                        <div class="d-flex justify-content-center align-items-center">
+                            <a href="#"><i class="fab fa-linkedin fa-2x clr-Orinoco"></i></a>
+                            <span class="mx-3 my-auto">&middot;</span>
+                            <a href="#"><i class="fab fa-facebook-square fa-2x clr-Orinoco"></i></a>
+                            <span class="mx-3 my-auto">&middot;</span>
+                            <a href="#"><i class="fab fa-instagram fa-2x clr-Orinoco"></i></a>
+                            <span class="mx-3 my-auto">&middot;</span>
+                            <a href="#"><i class="fab fa-twitter fa-2x clr-Orinoco"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </footer>
 
     <!--Bootstrap v5,0 bundle links -->
