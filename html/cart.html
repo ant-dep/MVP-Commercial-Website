@@ -99,8 +99,97 @@
         <!--====================CONTACT / ADRESSE======================-->
         <div id="form-error"></div>
         <form id="form" class="container mx-auto my-5" onsubmit="return beforeCreateOrder(event)">
-            <div id="checkout">
-                <!--Contacts and payment blocks, dynamically added with JS-->
+            <div id="checkout" class="d-none">
+                <div id="down" class="row pb-5">
+                    <div class="col-12 col-md-8">
+                        <!--====================CONTACT======================-->
+                        <div class="row">
+                            <div class="col mt-5 p-3">
+                                <h3 class="d-flex justify-content-between align-items-center">Contact</h3>
+                                <div class="row">
+                                    <div class="form-group col-md-4">
+                                        <label for="firstName">
+                                        Prénom
+                                    </label>
+                                        <input id="firstName" type="text" class="form-control" name="Prénom" required>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="lastName">
+                                        Nom
+                                    </label>
+                                        <input id="lastName" type="text" class="form-control" name="Nom" required>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="email">
+                                    Adresse email
+                                </label>
+                                    <input id="email" class="form-control" type="email" name="Email" required>
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label for="phone">
+                                    Téléphone
+                                </label>
+                                    <input id="phone" name="Téléphone" class="form-control" type="phone" required />
+                                </div>
+                            </div>
+                        </div>
+                        <!--====================ADRESSE======================-->
+                        <h3 class="d-flex justify-content-between align-items-center mt-3">Adresse de livraison</h3>
+                        <div class="form-group col-md-8">
+                            <label for="address">
+                        Rue
+                    </label>
+                            <input id="address" name="Adresse" class="form-control" type="address" required />
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="zipcode">
+                            Code Postal
+                        </label>
+                                <input type="text" name="Code Postal" id="zipcode" class="form-control" pattern="[0-9]*" inputmode="numeric" maxlength="5" required />
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="city">
+                            Ville
+                        </label>
+                                <input type="text" name="Ville" id="city" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-8 mt-3">
+                            <label for="message">
+                        Commentaire
+                    </label><textarea id="message" class="form-control" rows="4" cols="50" name="Commentaire"></textarea>
+                        </div>
+                    </div>
+                    <!--====================PAIEMENT======================-->
+                    <div class="col-12 col-md-4 mt-5 p-3">
+                        <div class="payment-info" onsubmit="return beforeCreateOrder(event)">
+                            <h3 class="d-flex justify-content-between align-items-center">Paiement</h3>
+                            <div class="row">
+                                <div class="col">
+                                    <span class="type d-block mt-3 mb-2">Type de Carte</span><label class="radio"> <input type="radio" name="card" value="payment" checked> <span><img width="30" src="https://img.icons8.com/color/48/000000/mastercard.png" /></span> </label>
+                                    <label class="radio"> <input type="radio" name="card" value="payment"> <span><img width="30" src="https://img.icons8.com/officel/48/000000/visa.png" /></span></label>
+                                    <label class="radio"> <input type="radio" name="card" value="payment"> <span><img width="30" src="https://img.icons8.com/ultraviolet/48/000000/amex.png" /></span></label>
+                                    <label class="radio"> <input type="radio" name="card" value="payment"> <span><img width="30" src="https://img.icons8.com/officel/48/000000/paypal.png" /></span></label>
+                                </div>
+                            </div>
+                            <div><label class="credit-card-label mt-2">Porteur de la Carte</label><input class="form-control credit-inputs" type="text"></div>
+                            <div><label class="credit-card-label mt-2">Numéro de la Carte</label><input class="form-control credit-inputs" type="text" pattern="[0-9]*" inputmode="numeric" maxlength="16" placeholder="0000 0000 0000 0000"></div>
+                            <div class="row mt-2">
+                                <div class="col-md-6"><label class="credit-card-label">Expiration</label><input class="form-control credit-inputs" type="text" pattern="(?:0[1-9]|1[0-2])/[0-9]{2}" title="Enter a date in this format MM/YY" maxlength="5" placeholder="mm/yy"></div>
+                                <div class="col-md-6"><label class="credit-card-label">CVV</label><input class="form-control credit-inputs" type="text" pattern="[0-9]*" inputmode="numeric" maxlength="3" placeholder="000"></div>
+                            </div>
+                            <div class="mt-5 justify-self-end">
+                                <hr class="line mb-5">
+                                <div class="d-flex justify-content-between"><span>Total(HT)</span><span id="total-ht"></span></div>
+                                <div class="d-flex justify-content-between"><span>TVA</span><span id="TVA"></span></div>
+                                <div class="d-flex justify-content-between mt-2"><span>Total(TTC)</span><span id="total-ttc"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Contacts and payment blocks, dynamically displayed with JS-->
             </div>
             <div id="confirmPurchase" class="d-none">
                 <div class="col-10 offset-1 col-md-4 offset-md-8">
