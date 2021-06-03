@@ -1,0 +1,16 @@
+{
+    "folders": [
+		{
+			"name": "AntoinedePertat_5_280421",
+			"path": "."
+		},
+		{
+			"name": "back-end",
+			"path": "../back-end"
+		}
+	],
+    "settings": {
+        "liveServer.settings.multiRootWorkspaceName": "AntoinedePertat_5_280421",
+        "liveServer.settings.port": 3002
+    }
+}

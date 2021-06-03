@@ -1,4 +1,5 @@
-// Fonction qui permet d'ajouter un produit dans le panier. Utilisation du Json.parse() et Json.stringify pour "traduire" les données reçus et envoyées
+// Fonction qui permet d'ajouter un produit dans le panier.
+//Utilisation du Json.parse() et Json.stringify pour "traduire" les données reçus et envoyées
 const addToShoppingCart = async(productId) => {
     const product = await api.getById(productId);
     const myShoppingCart = localStorage.myShoppingCart ?
