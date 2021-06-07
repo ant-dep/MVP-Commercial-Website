@@ -1,18 +1,18 @@
-// Fonction qui recupère l'id du produit et redirige vers la page produit.
+// Getting the id of the product selected
 
 const redirectToProductPage = (idProduct) => {
     localStorage.setItem("productId", idProduct);
-    // redirection vers la page produit
+    // and redirect to products.html
     document.location.href = "../html/products.html";
 }
 
 
-//PopUp - retour à la page produit
+//PopUp - back to index.html
 const returnToHome = () => {
     document.location.href = "../index.html";
 }
 
-//PopUp - Aller au panier
+//PopUp - go to cart.html
 const goToShoppingCartPage = () => {
     document.location.href = "../html/cart.html"
 }

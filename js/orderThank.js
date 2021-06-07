@@ -1,4 +1,5 @@
 const getCreatedOrder = () => {
+    // using the arguments given by createOrder POST in api.js
     const myCreatedOrder = JSON.parse(localStorage.createdOrder)
     let blockOfMyCreatedOrder =
         `
@@ -14,5 +15,6 @@ const getCreatedOrder = () => {
         `
 
     document.getElementById('orderTicket').innerHTML = blockOfMyCreatedOrder
+        // remove the order and products in the localStorage
     localStorage.removeItem('myShoppingCart', 'createdOrder')
 }

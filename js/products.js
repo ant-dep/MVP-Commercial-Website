@@ -1,7 +1,6 @@
-// Fonction qui récupère les données du serveur par leur ID 
-
+// Function that get products form the server by their id
 const loadDataById = async() => {
-    const camera = await api.getById(localStorage.getItem("productId"))
+    const camera = await api.getById(localStorage.getItem("productId")) // refers to api.js
     document.getElementById("containerOfProduct").innerHTML =
         `<div class="row h-100 mb-5">
             <div class="col-12 col-lg-6 bg-dark d-flex align-items-center p-0 p-lg-5">
@@ -21,10 +20,13 @@ const loadDataById = async() => {
             </div>
         </div>`
 
-    // on boucle sur les différentes lenses de "cameras" et on les affiche en tant qu'"option" du menu "select"
+    // Small loop that display each lenses in the api
     const lenses = camera.lenses
     const lensesBlock = document.getElementById('lensesBlock')
     for (const lense of lenses) {
+        // adding an option within the select menu for each lenses
         lensesBlock.innerHTML += `<option class="text-center border border-gray py-2">${lense}</option>`
     }
+    // Load the number of items in cart in the navbar
+    cartNumbers()
 }

@@ -1,9 +1,9 @@
-// Class Camera Api affecté dans une variable pour l'appeler de manière plus simple
-const api = new CameraApi()
+// Class Api used as a class to call it easily
+const api = new Api()
 
-// Fonction qui récupère les données du serveur et les affiches.
+// Function that get infos from server and display them
 const loadData = async() => {
-    const productList = await api.getAll()
+    const productList = await api.getAll() // refers to api.js
     let containerOfProductCarousel = ""
     let containerOfProductList = ""
     for (const product of productList) {
@@ -12,7 +12,7 @@ const loadData = async() => {
                 <img src="${product.imageUrl}" class="d-block w-100" alt="${product.name}">
         </div>`
     }
-
+    // When the button is clicked, display every products as cards within HTML
     const displayButton = document.getElementById("displayButton")
     displayButton.addEventListener('click', () => {
         for (const product of productList) {
@@ -31,6 +31,8 @@ const loadData = async() => {
             </div>
         `
         }
+
+        // Then scroll the page to new displayed elements
         const element = document.querySelector('#containerOfProductList')
         const topPos = element.getBoundingClientRect().top + window.pageYOffset
 
@@ -38,9 +40,12 @@ const loadData = async() => {
                 top: topPos, // scroll so that the element is at the top of the view
                 behavior: 'smooth' // smooth scroll
             })
-            // désactive le button après le clic
+            // Disable the button after the click to avoid displaying multiple times
         const displayButton = document.getElementById("displayButton")
         displayButton.disabled = true;
         displayButton.style.display = "none"
     })
+
+    // Load the number of items in cart in the navbar
+    cartNumbers()
 }
