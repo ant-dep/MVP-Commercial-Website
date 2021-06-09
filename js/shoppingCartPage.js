@@ -69,6 +69,8 @@ const showCartContent = () => {
                 const totalPriceOfCart = getCartTotalPrice()
                     // Update the total cart cost
                 document.getElementById('sumTotal').innerHTML = `<span> Total : </span> <span> ${totalPriceOfCart} € </span> `
+                    // update the cart number in the navbar
+                cartNumbers()
             })
         }
     }

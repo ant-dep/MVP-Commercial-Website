@@ -17,7 +17,7 @@ const loadData = async() => {
     displayButton.addEventListener('click', () => {
         for (const product of productList) {
             document.getElementById("containerOfProductList").innerHTML += `
-            <div class="col-12 col-lg-4 mx-auto">
+            <div class="col-12 col-lg-4">
                 <div class="card img-thumbnail my-3">
                     <img id="productImage" class="card-img-top img-fluid rounded-top p-2" src="${product.imageUrl}" alt="${product.name}">
                     <div class="card-body">
@@ -32,14 +32,10 @@ const loadData = async() => {
         `
         }
 
-        // Then scroll the page to new displayed elements
-        const element = document.querySelector('#containerOfProductList')
-        const topPos = element.getBoundingClientRect().top + window.pageYOffset
+        // hide the carousel
+        document.getElementById('carousel').style.display = "none"
 
-        window.scrollTo({
-                top: topPos, // scroll so that the element is at the top of the view
-                behavior: 'smooth' // smooth scroll
-            })
+        const element = document.querySelector('#containerOfProductList')
             // Disable the button after the click to avoid displaying multiple times
         const displayButton = document.getElementById("displayButton")
         displayButton.disabled = true;

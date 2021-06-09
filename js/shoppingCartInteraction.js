@@ -35,6 +35,11 @@ function cartNumbers() {
         console.log(products.length);
         // then display the total of the array in the navbar
         document.querySelector('#cart').textContent = products.length;
+
+        if (products.length > 9) {
+            document.querySelector('#cart').classList = ('position-absolute start-0 mx-3 my-1')
+            document.querySelector('#cart').textContent = '9+'
+        }
     }
 }
 

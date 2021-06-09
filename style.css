@@ -2,7 +2,11 @@
     background-color: #f3e9f1;
 }
 
-#cart,
+#cart {
+    color: white;
+    padding-top: 0.3em;
+}
+
 .clr-Orinoco {
     background: -moz-linear-gradient(to bottom right, #cf7f48, #905bfd);
     background: -webkit-linear-gradient(to bottom right, #cf7f48, #905bfd);
